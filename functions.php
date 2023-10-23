@@ -111,6 +111,3 @@ add_action('wp_enqueue_scripts','theme_cuisine_assets');
 add_action('add_meta_boxes','cuisine_add_custum_box');// Ajout metabox 
 
 
-add_filter('manage_recette_posts_colums',function($columns){
-var_dump($columns);die();
-});

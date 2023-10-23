@@ -2,7 +2,7 @@
    <a> Bonjour:<?php wp_title();?></a> <!--wp_title()  Affiche ou récupère le titre de la page   -->
    <?php wp_title_rss();?>  <!--wp_title_rss()  Affiche ou récupère le titre du site   -->
 
-<?php if(have_posts()): ?>
+   <?php if(have_posts()): ?>
     <?php while(have_posts()):the_post();?>     <!--boucle pour regarder dans les article-->
 <div class="card" >
         <?php the_post_thumbnail('post-thumbnail',[ 'class '=>'card-img-top', 'alt'=>''])?>   <!--afficher la vignettes de l'article-->
