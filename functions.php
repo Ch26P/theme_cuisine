@@ -1,7 +1,7 @@
 <?php 
  function theme_cuisine(){
 add_theme_support('title-tag');
-add_theme_support( 'post-thumbnails', array( 'post' ) );  /** ajout des image de mise en avantdans les post */
+add_theme_support( 'post-thumbnails', array( 'post' ) );  /** ajout des image de mise en avant dans les post */
  }
 
 function theme_cuisine_assets(){
@@ -66,9 +66,12 @@ function cuisine_init(){
         'label' => 'Recettes',
         'public'=>true,
         'menu_position'=> 2,
+        /*'template_lock'=>'all',*/
         'menu_icon'=>'dashicons-welcome-write-blog',
-        'supports'=>['title','editor','thumbnail'],
+        'supports'=>['title','editor', 
+            'author','thumbnail','comments','excerpt','post-formats', 'page-attributes' ],
        'show_in_rest' => true,
+       'has_archive'=>true,
 
     ]);
     register_post_type('ingredient',[
@@ -77,18 +80,37 @@ function cuisine_init(){
         'menu_position'=> 2,
     'menu_icon'=>'dashicons-cart',
     'supports'=>['title','editor','thumbnail'],
-    'show_in_rest' => true,
+    'show_in_rest' => false,
     ]);
 
 
 }
-
+/*metabox choix des ingredient*/
 function cuisine_add_custum_box(){
-
+add_meta_box('cuisine_ingredients_quantite','choisir les ingrédients et la quantité associé','cuisine_remplir_quantite_ingredients_box','recette','side');
 }
+function cuisine_remplir_quantite_ingredients_box(){
+   if(have_posts()): 
+     while(have_posts()):the_post();?>
+   
+   
+    <input type='checkbox' value=''name='Ingredient'>
+    <label for='ingredients'>Le nom de l'ingredients</label>
+    
+    <?php   endwhile ?>   
+
+<?php else: ?>
+    <p>Pas d'ingredients enregistré</p>
+<?php endif; 
+}
+
 
 add_action('init','cuisine_init');
 add_action('after_setup_theme','theme_cuisine');
 add_action('wp_enqueue_scripts','theme_cuisine_assets');
-add_action('add_meta_boxes','cuisine_add_custum_box');
+add_action('add_meta_boxes','cuisine_add_custum_box');// Ajout metabox 
 
+
+add_filter('manage_recette_posts_colums',function($columns){
+var_dump($columns);die();
+});
