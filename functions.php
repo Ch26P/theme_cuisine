@@ -1,10 +1,10 @@
 <?php 
  function theme_cuisine(){
 add_theme_support('title-tag');
-add_theme_support( 'post-thumbnails', array( 'post' ) );  /** ajout des image de mise en avant dans les post */
-add_theme_support( 'post-thumbnails', array( 'recette' ) );/** ajout des image de mise en avant dans recettes */
-add_theme_support( 'post-thumbnails', array( 'ingredient' ) );/** ajout des image de mise en avant dans ingredient */
-}
+add_theme_support( 'post-thumbnails', array( 'post', 'recette','ingredient') );  /** ajout des image de mise en avant dans les post */
+/** add_theme_support( 'post-thumbnails', array( 'recette' ) );ajout des image de mise en avant dans recettes */
+/**add_theme_support( 'post-thumbnails', array( 'ingredient' ) ); ajout des image de mise en avant dans ingredient */
+}/*verifier les fonctions a installé ex:htlm5 ?*/
 
 function theme_cuisine_assets(){
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/theme.css',
@@ -76,6 +76,7 @@ function cuisine_init(){
             'edit_items'=>'tous les type parfum',
            'add_new_item'=>'Ajouter type parfum',
         ],
+        'show_in_menu'=>false,
         'show_in_rest' => true,
         'hierarchical' => true ,
     ]);
@@ -144,4 +145,25 @@ add_filter('manage_recette_posts_columns',function($columns){
            /* if ($column ==='type_plats'){
                 echo 'bonjour'; }*/
             } , 10,2);
+    /*filtrer les nom des colonnes des "ingredients" */
+add_filter('manage_ingredient_posts_columns',function($columns){
+    return[
+        'cb'=>$columns['cb'],
+        'thumbnail'=>'Miniature',
+        'title'=>$columns['title'],
     
+  
+    
+    'taxonomy'=>'type aliment',
+    'date'=>$columns['date'],
+    ];
+    });
+    add_filter('manage_ingredient_posts_custom_column',function($column,$postId){
+        if ($column ==='thumbnail'){
+            the_post_thumbnail('thumbnail', $postId); }
+    
+
+       
+           /* if ($column ==='type_plats'){
+                echo 'bonjour'; }*/
+            } , 10,2);
