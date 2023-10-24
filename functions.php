@@ -2,7 +2,9 @@
  function theme_cuisine(){
 add_theme_support('title-tag');
 add_theme_support( 'post-thumbnails', array( 'post' ) );  /** ajout des image de mise en avant dans les post */
- }
+add_theme_support( 'post-thumbnails', array( 'recette' ) );/** ajout des image de mise en avant dans recettes */
+add_theme_support( 'post-thumbnails', array( 'ingredient' ) );/** ajout des image de mise en avant dans ingredient */
+}
 
 function theme_cuisine_assets(){
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/theme.css',
@@ -20,6 +22,32 @@ function test_variable($valeur) {       tester une variable
 add_filter('la fonction ou la houk s insere','test_variable');
 */
 function cuisine_init(){
+
+
+    register_post_type('recette',[
+        'label' => 'Recettes',
+        'public'=>true,
+        'menu_position'=> 1,
+       
+        
+        'menu_icon'=>'dashicons-welcome-write-blog',
+        'supports'=>['thumbnail','title','editor','revisions','author','comments','excerpt','post-formats', 'page-attributes' ],
+        
+        /*   */ 
+       'show_in_rest' => true,
+       'has_archive'=>true,
+
+    ]);
+    register_post_type('ingredient',[
+        'label' => 'Ingredients',
+        'public'=>true,
+        'menu_position'=> 2,
+    'menu_icon'=>'dashicons-cart',
+    'supports'=>['title','editor','thumbnail'],
+    'show_in_rest' => true,
+    ]);
+
+
     register_taxonomy('type_plats','recette',[
         'labels'=> [
             'name'=> 'type de plat',
@@ -62,26 +90,7 @@ function cuisine_init(){
         'hierarchical' => true ,
     ]);
 
-    register_post_type('recette',[
-        'label' => 'Recettes',
-        'public'=>true,
-        'menu_position'=> 2,
-        /*'template_lock'=>'all',*/
-        'menu_icon'=>'dashicons-welcome-write-blog',
-        'supports'=>['title','editor', 
-            'author','thumbnail','comments','excerpt','post-formats', 'page-attributes' ],
-       'show_in_rest' => true,
-       'has_archive'=>true,
 
-    ]);
-    register_post_type('ingredient',[
-        'label' => 'Ingredients',
-        'public'=>true,
-        'menu_position'=> 2,
-    'menu_icon'=>'dashicons-cart',
-    'supports'=>['title','editor','thumbnail'],
-    'show_in_rest' => false,
-    ]);
 
 
 }
@@ -111,3 +120,28 @@ add_action('wp_enqueue_scripts','theme_cuisine_assets');
 add_action('add_meta_boxes','cuisine_add_custum_box');// Ajout metabox 
 
 
+
+/*filtrer les nom des colonnes de "Recettes" */
+add_filter('manage_recette_posts_columns',function($columns){
+    return[
+        'cb'=>$columns['cb'],
+        'thumbnail'=>'Miniature',
+        'title'=>$columns['title'],
+    
+    'author'=>$columns['author'],
+    
+    'taxonomy'=>'type_plats',
+    'date'=>$columns['date'],
+    ];
+    });
+
+    add_filter('manage_recette_posts_custom_column',function($column,$postId){
+        if ($column ==='thumbnail'){
+            the_post_thumbnail('thumbnail', $postId); }
+    
+
+       
+           /* if ($column ==='type_plats'){
+                echo 'bonjour'; }*/
+            } , 10,2);
+    
