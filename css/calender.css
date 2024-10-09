@@ -1,0 +1,135 @@
+/* styles.css */
+
+#calendar-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar-header button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#calendar-header button:hover {
+    background-color: #ddd;
+}
+
+#calendar-header #current-month-year {
+    font-size: 1.2em;
+}
+
+#calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.calendar-day.header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.calendar-day-cell {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    height: 150px; /* Augmenter la hauteur pour les blocs */
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day-cell:hover {
+    background-color: #f0f0f0;
+}
+
+.meal-block {
+    border: 1px solid #ccc;
+    margin: 2px 0;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.breakfast {
+    background-color: #ffeb3b;
+}
+
+.lunch {
+    background-color: #ff9800;
+}
+
+.dinner {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+#recipe-form {
+    margin-top: 20px;
+}
+
+#recipe-form label {
+    display: block;
+    margin: 5px 0;
+}
+
+#recipe-form input, #recipe-form select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#recipe-form button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#recipe-form button:hover {
+    background-color: #45a049;
+}
+
+#recipe-planning {
+    margin-top: 20px;
+}
+
+.recipe-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recipe-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+}
+
+.recipe-list li .remove-recipe {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.recipe-list li .remove-recipe:hover {
+    background-color: #e53935;
+}

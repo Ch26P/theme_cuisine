@@ -1,0 +1,109 @@
+header {
+  position: sticky;
+}
+header .container_navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+header .container_navbar #logo {
+  margin-left: 50px;
+}
+header .container_navbar #logo a .img_logo {
+  height: 70px;
+}
+header .container_navbar #container_line_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+header .container_navbar #container_line_menu .line {
+  height: 2px;
+  background-color: #000;
+  display: block;
+  width: 30px;
+}
+header .container_navbar #container_line_menu #line_1 {
+  margin-bottom: 7px;
+}
+header .container_navbar #container_line_menu #line_3 {
+  margin-top: 7px;
+}
+header .container_navbar #filtre_general {
+  width: 60%;
+}
+header .container_navbar #filtre_general form {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #070707;
+  border-radius: 25px;
+  transition: all 0.4s;
+}
+header .container_navbar #filtre_general form button {
+  display: flex;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+header .container_navbar #filtre_general form button img {
+  width: 20px;
+}
+header .container_navbar #filtre_general form label {
+  width: 120px;
+  border-left: 1px solid #240c03;
+}
+header .container_navbar #filtre_general form input {
+  width: 100%;
+  padding-right: 32px;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: inherit;
+  border: none;
+  /*  border-right-width: medium;
+    border-right-style: none;
+    border-right-color: currentcolor;
+  border-right-width: medium;
+  border-right-style: none;
+  border-right-color: currentcolor;
+  outline: none; */
+  border-right: 1px solid #240c03;
+}
+header .container_navbar #connect {
+  margin-right: 50px;
+}
+header .container_navbar #connect .connect_in p a {
+  cursor: pointer;
+}
+header .container_navbar #connect .connect_out p {
+  cursor: pointer;
+}
+header .burger_menu ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: var(--color2);
+}
+header .burger_menu ul li {
+  list-style-type: none;
+}
+header #bloc_login {
+  background: var(--color1);
+  width: 200px;
+  z-index: 0;
+  position: absolute;
+  right: 10px;
+  top: 110px;
+  text-align: center;
+  display: none;
+}/*# sourceMappingURL=header.css.map */

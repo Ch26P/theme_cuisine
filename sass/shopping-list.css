@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/* Style pour les lignes barrées */
+.ingredient-barré {
+  text-decoration: line-through;
+}
+
+/* Optionnel : Style pour la case à cocher */
+.ingredient-checkbox {
+  cursor: pointer;
+}/*# sourceMappingURL=shopping-list.css.map */

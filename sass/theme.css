@@ -1,0 +1,397 @@
+@charset "UTF-8";
+:root {
+  /*variable*/
+  --color: #fff;
+  --color1: #07aafa;
+  --color2: #ecd2b7;
+  --color3: #1656e3;
+}
+
+body {
+  width: 100%;
+}
+
+body *,
+h1,
+h2,
+h3,
+p,
+a {
+  font-family: "Space Mono", monospace;
+  color: black;
+}
+
+h1 {
+  font-size: 85px;
+  margin-top: 0;
+}
+h2 {
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0em;
+}
+h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+}
+header .container_navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+header .container_navbar #logo {
+  margin-left: 50px;
+}
+header .container_navbar #logo a .img_logo {
+  height: 70px;
+}
+header .container_navbar #container_line_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+header .container_navbar #container_line_menu .line {
+  height: 2px;
+  background-color: #000;
+  display: block;
+  width: 30px;
+}
+header .container_navbar #container_line_menu #line_1 {
+  margin-bottom: 7px;
+}
+header .container_navbar #container_line_menu #line_3 {
+  margin-top: 7px;
+}
+header .container_navbar #filtre_general {
+  width: 60%;
+}
+header .container_navbar #filtre_general form {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #070707;
+  border-radius: 25px;
+  transition: all 0.4s;
+}
+header .container_navbar #filtre_general form button {
+  display: flex;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+header .container_navbar #filtre_general form button img {
+  width: 20px;
+}
+header .container_navbar #filtre_general form label {
+  width: 120px;
+  border-left: 1px solid #240c03;
+}
+header .container_navbar #filtre_general form input {
+  width: 100%;
+  padding-right: 32px;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: inherit;
+  border: none;
+  /*  border-right-width: medium;
+    border-right-style: none;
+    border-right-color: currentcolor;
+  border-right-width: medium;
+  border-right-style: none;
+  border-right-color: currentcolor;
+  outline: none; */
+  border-right: 1px solid #240c03;
+}
+header .container_navbar #connect {
+  margin-right: 50px;
+}
+header .container_navbar #connect .connect_in p a {
+  cursor: pointer;
+}
+header .container_navbar #connect .connect_out p {
+  cursor: pointer;
+}
+header .burger_menu ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: var(--color2);
+}
+header .burger_menu ul li {
+  list-style-type: none;
+}
+header #bloc_login {
+  background: var(--color1);
+  width: 200px;
+  z-index: 0;
+  position: absolute;
+  right: 10px;
+  top: 110px;
+  text-align: center;
+  display: none;
+}
+footer {
+  background-color: var(--color2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  align-items: center;
+}
+footer .menu-footer-container {
+  width: 70%;
+  text-align: center;
+}
+footer .menu-footer-container ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+}
+footer .menu-footer-container ul li {
+  list-style-type: none;
+}
+
+#calendar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Couleur de l'overlay avec transparence */
+  z-index: 1000; /* Assure que l'overlay est au-dessus du contenu de la page */
+  display: none; /* Masqué par défaut */
+}
+
+#calendar-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Assure que le calendrier est au-dessus de l'overlay */
+  display: none; /* Masqué par défaut */
+  max-width: 90vw; /* Largeur maximale pour éviter d'être trop large sur petits écrans */
+  max-height: 80vh; /* Hauteur maximale pour éviter d'être trop grand sur petits écrans */
+  overflow: auto; /* Permet le défilement si le contenu dépasse la taille du conteneur */
+}
+#calendar-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#calendar-container table th, #calendar-container table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+#calendar-container table th {
+  background-color: #007BFF;
+  color: white;
+}
+#calendar-container table td {
+  vertical-align: top;
+  position: relative;
+}
+
+#calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#calendar-header button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#calendar-header button:hover {
+  background-color: #0056b3;
+}
+#calendar-header #current-month-year {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#calendar-body {
+  width: 100%;
+}
+#calendar-body .calendar-day-cell {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  height: 120px;
+  position: relative;
+  vertical-align: top;
+  background-color: #f9f9f9;
+}
+#calendar-body .calendar-day-cell:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+#calendar-body .calendar-day-cell:hover {
+  background-color: #ececec;
+}
+#calendar-body .calendar-day-cell .meal-block {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+#calendar-body .calendar-day-cell .meal-block.breakfast {
+  background-color: #e0f7fa;
+}
+#calendar-body .calendar-day-cell .meal-block.lunch {
+  background-color: #e8f5e9;
+}
+#calendar-body .calendar-day-cell .meal-block.dinner {
+  background-color: #fff3e0;
+}
+#calendar-body .calendar-day-cell .meal-block .delete-btn {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 10px;
+}
+#calendar-body .calendar-day-cell .meal-block .delete-btn:hover {
+  color: darkred;
+}
+#calendar-body .calendar-day-cell .checkbox-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+}
+#calendar-body .calendar-day-cell .checkbox-container .select-day {
+  display: inline-block;
+  margin-right: 5px;
+}
+#calendar-body .calendar-day-cell .checkbox-container .info-message {
+  display: none;
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  background-color: #007BFF;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+#calendar-body .calendar-day-cell .checkbox-container:hover .info-message {
+  display: inline;
+}
+
+#create-list-button {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+#create-list-button:hover {
+  background-color: #218838;
+}
+
+#meal-form {
+  width: 300px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+#meal-form h2 {
+  margin-top: 0;
+}
+#meal-form label {
+  display: block;
+  margin-top: 10px;
+}
+#meal-form input, #meal-form select {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 18px);
+}
+#meal-form button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#meal-form button:hover {
+  background-color: #218838;
+}
+
+#page-info {
+  margin-top: 20px;
+}
+#page-info h2 {
+  margin-top: 0;
+}
+#page-info p {
+  margin: 5px 0;
+}
+
+/* Style pour les lignes barrées */
+.ingredient-barré {
+  text-decoration: line-through;
+}
+
+/* Optionnel : Style pour la case à cocher */
+.ingredient-checkbox {
+  cursor: pointer;
+}/*# sourceMappingURL=theme.css.map */

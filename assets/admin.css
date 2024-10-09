@@ -1,0 +1,26 @@
+.column-thumbnail{
+    width: 130px;
+
+    text-align: center;
+}
+.column-title{
+    width: 200px;
+    text-align: center;
+   
+  
+}
+.column-taxonomy{
+    width: 200px;
+    text-align: center;
+}
+.column-origine{
+    width: 200px;
+    text-align: center;
+}
+.column-type_plats{
+    width: 200px;
+    text-align: center;
+}
+.widefat td{
+    vertical-align:bottom/*middle*/;
+}

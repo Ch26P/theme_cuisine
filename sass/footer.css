@@ -1,0 +1,21 @@
+footer {
+  background-color: var(--color2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  align-items: center;
+}
+footer .menu-footer-container {
+  width: 70%;
+  text-align: center;
+}
+footer .menu-footer-container ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+}
+footer .menu-footer-container ul li {
+  list-style-type: none;
+}/*# sourceMappingURL=footer.css.map */
